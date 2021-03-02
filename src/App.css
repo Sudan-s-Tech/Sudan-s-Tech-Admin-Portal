@@ -1,6 +1,6 @@
 .App {
     text-align: center;
-    /* background-image: url("./Assets/back2.svg"); */
+    overflow-y: hidden;
 }
 .col-md-6 img {
     margin-top: 5%;
@@ -9,12 +9,9 @@
 .main {
     text-align: center;
     margin-top: 5%;
-    height: 100vh;
 }
 .App img {
-    border-radius: 50%;
-    border: 5px solid #5cf39b;
-    width: 50%;
+    margin-right: 10px;
 }
 .App-logo {
     height: 40vmin;
