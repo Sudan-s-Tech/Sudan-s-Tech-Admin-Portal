@@ -6,6 +6,7 @@ import Event from "./components/Events/Events";
 import Training from "./components/Trainings/Training";
 import Test from "./test";
 import Teacher from "./components/Teachers/Teacher";
+import UpdateCourse from "./components/Trainings/Update";
 function App() {
     const [username, setusername] = useState("");
 
@@ -53,6 +54,9 @@ function App() {
             </Route>
             <Route path="/teachers" exact={true}>
                 <Teacher />
+            </Route>
+            <Route path="/update_training" exact={true}>
+                <UpdateCourse />
             </Route>
             <Route path="/test" exact={true}>
                 <Test />
