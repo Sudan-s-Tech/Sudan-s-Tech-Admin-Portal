@@ -38,7 +38,7 @@ body {
     background: var(--greyLight-1);
 }
 
-input {
+.App input {
     width: 60vmin;
     height: 15vmin;
     border: none;
