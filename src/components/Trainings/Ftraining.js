@@ -303,7 +303,7 @@ export default function Test(props) {
                         }}
                     >
                         {" "}
-                        Add module
+                        Submit
                     </button>
                 </div>
             )}

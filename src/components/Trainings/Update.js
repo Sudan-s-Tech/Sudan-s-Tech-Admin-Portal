@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-
+var local_modules = [];
 export default function Update(props) {
     const [course, setcourse] = useState({});
+    const [wait, setwait] = useState(false);
     useEffect(() => {
         axios
             .get("https://sudanstechapi.herokuapp.com/trainings")
@@ -10,19 +11,23 @@ export default function Update(props) {
                 res.data.map((item) => {
                     if (item._id == props.name) {
                         setcourse(item);
-                        console.log(item.title);
+                        setwait(true);
+                        local_modules = item.modules;
                     }
                 });
-                console.log(course);
             });
     }, [props.name]);
-    function submitHandler() {
-        course.id = "603e223904e19d42e44fe3d6";
 
-        axios.put("https://sudanstechapi.herokuapp.com/training/change", {
-            data: course,
-        });
-        console.log("sent");
+    function submitHandler() {
+        course.id = props.name;
+        course.modules = local_modules;
+        console.log(course);
+        // console.log(local_modules);
+        axios
+            .put("http://localhost:5000/training/change", {
+                data: course,
+            })
+            .then(console.log("sent"));
     }
     return (
         <div>
@@ -46,7 +51,7 @@ export default function Update(props) {
                         }}
                     />
                 </div>
-                <div class="input-group mb-3">
+                {/* <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">
                         @
                     </span>
@@ -64,7 +69,7 @@ export default function Update(props) {
                             }));
                         }}
                     />
-                </div>
+                </div> */}
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">
                         @
@@ -217,6 +222,79 @@ export default function Update(props) {
                         }}
                     />
                 </div>
+                {console.log(local_modules)}
+                {
+                    wait === true ? (
+                        course.modules.map((entity, i) => {
+                            return (
+                                <div>
+                                    <div class="input-group mb-3">
+                                        <span
+                                            class="input-group-text"
+                                            id="basic-addon1"
+                                        >
+                                            @
+                                        </span>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            aria-label="Username"
+                                            aria-describedby="basic-addon1"
+                                            placeholder={entity.title}
+                                            onChange={(e) => {
+                                                e.preventDefault();
+                                                // setcourse((prevState) => ({
+                                                //     ...prevState,
+                                                //     modules: [
+
+                                                //         {
+                                                //             title:
+                                                //                 e.target.value,
+                                                //         },
+                                                //     ],
+                                                // }));
+                                                local_modules[i].title =
+                                                    e.target.value;
+                                            }}
+                                        />
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span
+                                            class="input-group-text"
+                                            id="basic-addon1"
+                                        >
+                                            @
+                                        </span>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            aria-label="Username"
+                                            aria-describedby="basic-addon1"
+                                            placeholder={entity.items}
+                                            onChange={(e) => {
+                                                e.preventDefault();
+                                                // setcourse((prevState) => ({
+                                                //     ...prevState,
+                                                //     modules: [
+                                                //         {
+                                                //             items:
+                                                //                 e.target.value,
+                                                //         },
+                                                //     ],
+                                                // }));
+                                                local_modules[i].items =
+                                                    e.target.value;
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+                            );
+                        })
+                    ) : (
+                        <div></div>
+                    )
+                    // console.log(course)
+                }
             </form>
             <button
                 type="submit"

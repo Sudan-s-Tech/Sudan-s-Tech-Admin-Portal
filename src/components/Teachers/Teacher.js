@@ -162,7 +162,13 @@ export default function Teacher(props) {
                         />
                     </div>
 
-                    <button onClick={handler}>Submit</button>
+                    <button
+                        type="submit"
+                        class="btn btn-success"
+                        onClick={handler}
+                    >
+                        Submit
+                    </button>
                 </div>
             )}
         </div>
