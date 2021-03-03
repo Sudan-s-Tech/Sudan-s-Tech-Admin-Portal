@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Nav from "./components/Navbar/Navbar";
@@ -6,13 +6,15 @@ import Event from "./components/Events/Events";
 import Training from "./components/Trainings/Ftraining";
 import Test from "./test";
 import Teacher from "./components/Teachers/Teacher";
-import UpdateCourse from "./components/Trainings/Update";
 import ShowEvents from "./components/Events/ShowEvents";
-import { Card, Button, H4, H6, H5, Divider, Subtitle1 } from "ui-neumorphism";
-
+import ShowTraining from "./components/Trainings/ShowTrainings";
+import Tab from "./components/Tab/Tab";
 function App() {
     const [username, setusername] = useState("");
-
+    const [flag, setFlag] = useState(false);
+    useEffect(() => {
+        if (username === "welcome") setFlag(true);
+    }, [username]);
     return (
         <Router>
             <Route path="/" exact={true}>
@@ -31,7 +33,7 @@ function App() {
                                             }}
                                         />{" "}
                                         <br />
-                                        <Link to="/panel">
+                                        <Link to="/events">
                                             <button
                                                 class="button"
                                                 type="submit"
@@ -50,6 +52,7 @@ function App() {
                 </div>
             </Route>
             <Route path="/events" exact={true}>
+                <Tab />
                 <div className="container events-div">
                     <div className="row">
                         <div
@@ -59,40 +62,38 @@ function App() {
                                 height: "100vh",
                             }}
                         >
-                            <Event />
+                            <Event flag={flag} />
                         </div>
                         <div className="col-md-6">
                             {" "}
-                            <ShowEvents />
+                            <ShowEvents flag={flag} />
                         </div>
                     </div>
                 </div>
             </Route>
 
-            <Route path="/trainings" exact={true}>
+            <Route path="/add_trainings" exact={true}>
+                <Tab />
                 <div className="container events-div">
                     <div className="row">
                         <div
-                            className="col-md-6"
+                            className="col-md-12"
                             style={{
-                                borderRight: "1px solid black",
                                 height: "100vh",
                             }}
                         >
-                            <Training />
-                        </div>
-                        <div className="col-md-6">
-                            {" "}
-                            <UpdateCourse />
+                            <Training flag={flag} />
                         </div>
                     </div>
                 </div>
             </Route>
             <Route path="/teachers" exact={true}>
-                <Teacher />
+                <Tab />
+                <Teacher flag={flag} />
             </Route>
-            <Route path="/update_training" exact={true}>
-                <UpdateCourse />
+            <Route path="/edit_training" exact={true}>
+                <Tab />
+                <ShowTraining flag={flag} />
             </Route>
             <Route path="/test" exact={true}>
                 <Test />

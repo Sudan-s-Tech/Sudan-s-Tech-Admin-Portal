@@ -16,72 +16,115 @@ export default function Teacher() {
     }
     return (
         <div>
-            <input
-                type="text"
-                placeholder="name"
-                onChange={(e) => {
-                    e.preventDefault();
-                    setteacher_obj((prevState) => ({
-                        ...prevState,
-                        name: e.target.value,
-                    }));
-                }}
-            />
-            <input
-                type="text"
-                placeholder="bio"
-                onChange={(e) => {
-                    e.preventDefault();
-                    setteacher_obj((prevState) => ({
-                        ...prevState,
-                        bio: e.target.value,
-                    }));
-                }}
-            />
-            <input
-                type="text"
-                placeholder="image url"
-                onChange={(e) => {
-                    e.preventDefault();
-                    setteacher_obj((prevState) => ({
-                        ...prevState,
-                        imgurl: e.target.value,
-                    }));
-                }}
-            />
-            <input
-                type="text"
-                placeholder="twitter profile url"
-                onChange={(e) => {
-                    e.preventDefault();
-                    setteacher_obj((prevState) => ({
-                        ...prevState,
-                        twitter: e.target.value,
-                    }));
-                }}
-            />
-            <input
-                type="text"
-                placeholder="linkedin profile url"
-                onChange={(e) => {
-                    e.preventDefault();
-                    setteacher_obj((prevState) => ({
-                        ...prevState,
-                        linkedin: e.target.value,
-                    }));
-                }}
-            />
-            <input
-                type="text"
-                placeholder="course assigned"
-                onChange={(e) => {
-                    e.preventDefault();
-                    setteacher_obj((prevState) => ({
-                        ...prevState,
-                        course: e.target.value,
-                    }));
-                }}
-            />
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">
+                    Name
+                </span>
+                <input
+                    type="text"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                    onChange={(e) => {
+                        e.preventDefault();
+                        setteacher_obj((prevState) => ({
+                            ...prevState,
+                            name: e.target.value,
+                        }));
+                    }}
+                />
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">
+                    Course
+                </span>
+                <input
+                    type="text"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                    onChange={(e) => {
+                        e.preventDefault();
+                        setteacher_obj((prevState) => ({
+                            ...prevState,
+                            course: e.target.value,
+                        }));
+                    }}
+                />
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">
+                    linkedin
+                </span>
+                <input
+                    type="text"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                    onChange={(e) => {
+                        e.preventDefault();
+                        setteacher_obj((prevState) => ({
+                            ...prevState,
+                            linkedin: e.target.value,
+                        }));
+                    }}
+                />
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">
+                    twitter
+                </span>
+                <input
+                    type="text"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                    onChange={(e) => {
+                        e.preventDefault();
+                        setteacher_obj((prevState) => ({
+                            ...prevState,
+                            twitter: e.target.value,
+                        }));
+                    }}
+                />
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">
+                    Image-url
+                </span>
+                <input
+                    type="text"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                    onChange={(e) => {
+                        e.preventDefault();
+                        setteacher_obj((prevState) => ({
+                            ...prevState,
+                            imgurl: e.target.value,
+                        }));
+                    }}
+                />
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">
+                    Bio
+                </span>
+                <input
+                    type="text"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                    onChange={(e) => {
+                        e.preventDefault();
+                        setteacher_obj((prevState) => ({
+                            ...prevState,
+                            bio: e.target.value,
+                        }));
+                    }}
+                />
+            </div>
+
             <button onClick={handler}>Submit</button>
         </div>
     );
