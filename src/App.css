@@ -52,6 +52,9 @@ body {
     color: var(--primary);
     caret-color: var(--primary);
 }
+a:link {
+    text-decoration: wavy;
+}
 
 .button {
     margin-top: 2em;

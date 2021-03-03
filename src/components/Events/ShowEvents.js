@@ -10,7 +10,7 @@ export default function ShowEvents(props) {
     }, []);
 
     function eventRemover(eve_id) {
-        console.log(eve_id);
+        // console.log(eve_id);
         axios.delete("https://sudanstechapi.herokuapp.com/events/remove", {
             data: {
                 id: eve_id,

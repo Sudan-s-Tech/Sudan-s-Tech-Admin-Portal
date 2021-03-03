@@ -4,9 +4,16 @@ export default function Tab() {
     return (
         <div>
             <ul class="nav nav-pills nav-fill mb-5">
-                <Link to="/events">
+                <Link to="/">
                     <li class="nav-item">
                         <a class="nav-link active" href="#">
+                            Login
+                        </a>
+                    </li>
+                </Link>
+                <Link to="/events">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
                             Create and Delete Events
                         </a>
                     </li>
@@ -31,6 +38,13 @@ export default function Tab() {
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             Edit Trainings
+                        </a>
+                    </li>
+                </Link>
+                <Link to="/logout">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Logout
                         </a>
                     </li>
                 </Link>

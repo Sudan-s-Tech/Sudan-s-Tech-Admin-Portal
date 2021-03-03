@@ -4,11 +4,11 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Nav from "./components/Navbar/Navbar";
 import Event from "./components/Events/Events";
 import Training from "./components/Trainings/Ftraining";
-import Test from "./test";
 import Teacher from "./components/Teachers/Teacher";
 import ShowEvents from "./components/Events/ShowEvents";
 import ShowTraining from "./components/Trainings/ShowTrainings";
 import Tab from "./components/Tab/Tab";
+import Logout from "./components/Tab/Logout";
 function App() {
     const [username, setusername] = useState("");
     const [flag, setFlag] = useState(false);
@@ -52,23 +52,44 @@ function App() {
                 </div>
             </Route>
             <Route path="/events" exact={true}>
-                <Tab />
+                <Tab flag={flag} />
+
                 <div className="container events-div">
-                    <div className="row">
-                        <div
-                            className="col-md-6"
-                            style={{
-                                borderRight: "1px solid black",
-                                height: "100vh",
-                            }}
-                        >
-                            <Event flag={flag} />
+                    {flag === false ? (
+                        <div class="alert alert-danger" role="alert">
+                            <h4 class="alert-heading">
+                                Error:You Don't have the rights to access this
+                                page.
+                            </h4>
+                            <p>
+                                Aww yeah, you successfully read this important
+                                alert message. This example text is going to run
+                                a bit longer so that you can see how spacing
+                                within an alert works with this kind of content.
+                            </p>
+                            <hr />
+                            <p class="mb-0">
+                                Whenever you need to, be sure to use margin
+                                utilities to keep things nice and tidy.
+                            </p>
                         </div>
-                        <div className="col-md-6">
-                            {" "}
-                            <ShowEvents flag={flag} />
+                    ) : (
+                        <div className="row">
+                            <div
+                                className="col-md-6"
+                                style={{
+                                    borderRight: "1px solid black",
+                                    height: "100vh",
+                                }}
+                            >
+                                <Event flag={flag} />
+                            </div>
+                            <div className="col-md-6">
+                                {" "}
+                                <ShowEvents flag={flag} />
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </Route>
 
@@ -95,8 +116,9 @@ function App() {
                 <Tab />
                 <ShowTraining flag={flag} />
             </Route>
-            <Route path="/test" exact={true}>
-                <Test />
+            <Route path="/logout" exact={true}>
+                <Tab />
+                <Logout func={setFlag} />
             </Route>
         </Router>
     );

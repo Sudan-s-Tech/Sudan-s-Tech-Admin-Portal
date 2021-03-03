@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Update from "../../components/Trainings/Update";
-export default function ShowTrainings() {
+export default function ShowTrainings(props) {
     const [fetched_course, setFetched_course] = useState([]);
     const [name, setname] = useState("");
     useEffect(() => {
@@ -11,12 +11,38 @@ export default function ShowTrainings() {
                 setFetched_course(res.data);
             });
     }, []);
+    function Trainingremover(entity) {
+        axios.delete("http://localhost:5000/trainings/remove", {
+            data: {
+                id: entity,
+            },
+        });
+    }
     return (
         <div>
-            {fetched_course.map((crs) => {
-                return (
+            {props.flag === false ? (
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">
+                        Error:You Don't have the rights to access this page.
+                    </h4>
+                    <p>
+                        Aww yeah, you successfully read this important alert
+                        message. This example text is going to run a bit longer
+                        so that you can see how spacing within an alert works
+                        with this kind of content.
+                    </p>
+                    <hr />
+                    <p class="mb-0">
+                        Whenever you need to, be sure to use margin utilities to
+                        keep things nice and tidy.
+                    </p>
+                </div>
+            ) : (
+                <div>
+                    {" "}
                     <div className="container events-div">
                         <div className="row">
+                            {" "}
                             <div
                                 className="col-md-6"
                                 style={{
@@ -24,21 +50,37 @@ export default function ShowTrainings() {
                                     height: "100vh",
                                 }}
                             >
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h6>{crs.title}</h6>
-                                        <button
-                                            type="button"
-                                            class="btn btn-primary"
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                setname(crs._id);
-                                            }}
-                                        >
-                                            Select
-                                        </button>
-                                    </div>
-                                </div>
+                                {fetched_course.map((crs) => {
+                                    return (
+                                        <div class="card mt-3">
+                                            <div class="card-body">
+                                                <h6>{crs.title}</h6>
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-primary"
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        setname(crs._id);
+                                                    }}
+                                                >
+                                                    Update
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-danger ml-2"
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        Trainingremover(
+                                                            crs._id
+                                                        );
+                                                    }}
+                                                >
+                                                    delete
+                                                </button>
+                                            </div>
+                                        </div>
+                                    );
+                                })}{" "}
                             </div>
                             <div className="col-md-6">
                                 {" "}
@@ -46,8 +88,8 @@ export default function ShowTrainings() {
                             </div>
                         </div>
                     </div>
-                );
-            })}
+                </div>
+            )}
         </div>
     );
 }
