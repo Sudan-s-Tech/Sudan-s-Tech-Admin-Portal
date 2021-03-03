@@ -27,7 +27,7 @@ export default function Test(props) {
         obj.title = main_title;
     }
     async function add_module() {
-        axios.post("http//localhost:5000/trainings/create", {
+        axios.post("https://sudanstechapi.herokuapp.com/trainings/create", {
             data: await ar,
         });
     }

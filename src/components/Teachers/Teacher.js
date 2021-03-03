@@ -10,7 +10,7 @@ export default function Teacher(props) {
         course: "",
     });
     function handler() {
-        axios.post("http://localhost:5000/teacher/create", {
+        axios.post("https://sudanstechapi.herokuapp.com/teacher/create", {
             data: teacher_obj,
         });
     }

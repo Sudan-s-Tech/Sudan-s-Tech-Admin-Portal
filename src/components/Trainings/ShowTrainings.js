@@ -12,7 +12,7 @@ export default function ShowTrainings(props) {
             });
     }, []);
     function Trainingremover(entity) {
-        axios.delete("http://localhost:5000/trainings/remove", {
+        axios.delete("https://sudanstechapi.herokuapp.com/trainings/remove", {
             data: {
                 id: entity,
             },
