@@ -1,9 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Update from "../../components/Trainings/Update";
 export default function ShowTrainings(props) {
     const [fetched_course, setFetched_course] = useState([]);
     const [name, setname] = useState("");
+    const notify = () => {
+        toast.error("Training Deleted!", {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    };
     useEffect(() => {
         axios
             .get("https://sudanstechapi.herokuapp.com/trainings")
@@ -73,10 +86,21 @@ export default function ShowTrainings(props) {
                                                         Trainingremover(
                                                             crs._id
                                                         );
+                                                        notify();
                                                     }}
                                                 >
                                                     delete
                                                 </button>
+                                                <ToastContainer
+                                                    position="top-right"
+                                                    autoClose={1500}
+                                                    hideProgressBar={false}
+                                                    newestOnTop={false}
+                                                    closeOnClick
+                                                    rtl={false}
+                                                    pauseOnFocusLoss
+                                                    pauseOnHover
+                                                />
                                             </div>
                                         </div>
                                     );

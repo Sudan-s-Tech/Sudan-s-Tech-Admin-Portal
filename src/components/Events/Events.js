@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function Events(props) {
     const [heading, setHeading] = useState("");
     const [desc, setDesc] = useState("");
@@ -19,7 +21,17 @@ export default function Events(props) {
             },
         });
     }
-
+    const notify = () => {
+        toast.success("Event Created!", {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    };
     return (
         <div>
             {props.flag === false ? (
@@ -132,10 +144,26 @@ export default function Events(props) {
                     <button
                         type="button"
                         class="btn btn-success"
-                        onClick={handler}
+                        // onClick={handler}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handler();
+                            notify();
+                        }}
                     >
                         Submit
                     </button>
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={1500}
+                        Type="success"
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        pauseOnHover
+                    />
                 </div>
             )}
         </div>

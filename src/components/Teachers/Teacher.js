@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function Teacher(props) {
     const [teacher_obj, setteacher_obj] = useState({
         name: "",
@@ -9,6 +11,17 @@ export default function Teacher(props) {
         linkedin: "",
         course: "",
     });
+    const notify = () => {
+        toast.success("Training Created!", {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    };
     function handler() {
         axios.post("https://sudanstechapi.herokuapp.com/teacher/create", {
             data: teacher_obj,
@@ -165,10 +178,26 @@ export default function Teacher(props) {
                     <button
                         type="submit"
                         class="btn btn-success"
-                        onClick={handler}
+                        // onClick={handler}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handler();
+                            notify();
+                        }}
                     >
                         Submit
                     </button>
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={1500}
+                        Type="success"
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        pauseOnHover
+                    />
                 </div>
             )}
         </div>

@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // var array = [];
 export default function ShowEvents(props) {
     const [events, setEvents] = useState([]);
@@ -9,6 +11,17 @@ export default function ShowEvents(props) {
         });
     }, []);
 
+    const notify = () => {
+        toast.error("Event Deleted!", {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    };
     function eventRemover(eve_id) {
         // console.log(eve_id);
         axios.delete("https://sudanstechapi.herokuapp.com/events/remove", {
@@ -34,10 +47,22 @@ export default function ShowEvents(props) {
                                         class="btn btn-danger"
                                         onClick={(e) => {
                                             eventRemover(o._id);
+                                            notify();
                                         }}
                                     >
                                         Delete
                                     </button>
+                                    <ToastContainer
+                                        position="top-right"
+                                        autoClose={1500}
+                                        Type="success"
+                                        hideProgressBar={false}
+                                        newestOnTop={false}
+                                        closeOnClick
+                                        rtl={false}
+                                        pauseOnFocusLoss
+                                        pauseOnHover
+                                    />
                                 </div>
                             </div>
                         );

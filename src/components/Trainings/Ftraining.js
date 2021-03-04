@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function Test(props) {
     const [ar, setAr] = useState({
         title: "",
@@ -13,6 +15,17 @@ export default function Test(props) {
         level: 0,
         modules: [{}],
     });
+    const notify = () => {
+        toast.success("Training Created!", {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    };
     const [submodules, setsubmodules] = useState("");
     const [n, setN] = useState(1);
 
@@ -300,11 +313,23 @@ export default function Test(props) {
                         onClick={(e) => {
                             e.preventDefault();
                             add_module();
+                            notify();
                         }}
                     >
                         {" "}
                         Submit
                     </button>
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={1500}
+                        Type="success"
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        pauseOnHover
+                    />
                 </div>
             )}
         </div>

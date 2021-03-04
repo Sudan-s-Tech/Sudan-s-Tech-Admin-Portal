@@ -1,9 +1,22 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 var local_modules = [];
 export default function Update(props) {
     const [course, setcourse] = useState({});
     const [wait, setwait] = useState(false);
+    const notify = () => {
+        toast.success("Training Updated!", {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    };
     useEffect(() => {
         axios
             .get("https://sudanstechapi.herokuapp.com/trainings")
@@ -24,7 +37,7 @@ export default function Update(props) {
         console.log(course);
         // console.log(local_modules);
         axios
-            .put("http://localhost:5000/training/change", {
+            .put("https://sudanstechapi.herokuapp.com/training/change", {
                 data: course,
             })
             .then(console.log("sent"));
@@ -302,10 +315,22 @@ export default function Update(props) {
                 onClick={(e) => {
                     e.preventDefault();
                     submitHandler();
+                    notify();
                 }}
             >
                 Submit
             </button>
+            <ToastContainer
+                position="top-right"
+                autoClose={1500}
+                Type="success"
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                pauseOnHover
+            />
         </div>
     );
 }
