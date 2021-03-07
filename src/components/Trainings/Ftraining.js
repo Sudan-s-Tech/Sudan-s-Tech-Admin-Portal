@@ -295,6 +295,9 @@ export default function Test(props) {
                                         key={i}
                                         aria-describedby="basic-addon1"
                                         placeholder="submodules"
+                                        onFocus={(e) => {
+                                            setsubmodules("");
+                                        }}
                                         onChange={(e) => {
                                             e.preventDefault();
                                             setsubmodules(e.target.value);
