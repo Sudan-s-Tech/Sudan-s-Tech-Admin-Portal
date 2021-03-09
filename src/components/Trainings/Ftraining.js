@@ -43,11 +43,13 @@ export default function Test(props) {
         axios.post("https://sudanstechapi.herokuapp.com/trainings/create", {
             data: await ar,
         });
+        // console.log(ar);
     }
 
     async function add_submodule() {
         obj.items = submodules;
         ar.modules.push(obj);
+        setsubmodules("");
     }
 
     return (
@@ -295,9 +297,9 @@ export default function Test(props) {
                                         key={i}
                                         aria-describedby="basic-addon1"
                                         placeholder="submodules"
-                                        onFocus={(e) => {
-                                            setsubmodules("");
-                                        }}
+                                        // onFocus={(e) => {
+                                        //     setsubmodules("");
+                                        // }}
                                         onChange={(e) => {
                                             e.preventDefault();
                                             setsubmodules(e.target.value);
