@@ -10,7 +10,7 @@ export default function Events(props) {
     const [link, setLink] = useState("");
     const [img, setImg] = useState("");
     function handler() {
-        axios.post("https://sudanstechapi.herokuapp.com/events/create", {
+        axios.post("https://sudans-api.herokuapp.com/events/create", {
             data: {
                 title: heading,
                 link: link,

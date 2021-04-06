@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function ShowEvents(props) {
     const [events, setEvents] = useState([]);
     useEffect(() => {
-        axios.get("https://sudanstechapi.herokuapp.com/events").then((res) => {
+        axios.get("https://sudans-api.herokuapp.com/events").then((res) => {
             setEvents(res.data);
         });
     }, []);
@@ -24,7 +24,7 @@ export default function ShowEvents(props) {
     };
     function eventRemover(eve_id) {
         // console.log(eve_id);
-        axios.delete("https://sudanstechapi.herokuapp.com/events/remove", {
+        axios.delete("https://sudans-api.herokuapp.com/events/remove", {
             data: {
                 id: eve_id,
             },

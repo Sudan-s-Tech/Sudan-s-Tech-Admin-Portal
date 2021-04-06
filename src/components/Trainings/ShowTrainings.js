@@ -19,13 +19,13 @@ export default function ShowTrainings(props) {
     };
     useEffect(() => {
         axios
-            .get("https://sudanstechapi.herokuapp.com/trainings")
+            .get("https://sudans-api.herokuapp.com/trainings")
             .then((res) => {
                 setFetched_course(res.data);
             });
     }, []);
     function Trainingremover(entity) {
-        axios.delete("https://sudanstechapi.herokuapp.com/trainings/remove", {
+        axios.delete("https://sudans-api.herokuapp.com/trainings/remove", {
             data: {
                 id: entity,
             },

@@ -23,7 +23,7 @@ export default function Teacher(props) {
         });
     };
     function handler() {
-        axios.post("https://sudanstechapi.herokuapp.com/teacher/create", {
+        axios.post("https://sudans-api.herokuapp.com/teacher/create", {
             data: teacher_obj,
         });
     }

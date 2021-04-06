@@ -19,7 +19,7 @@ export default function Update(props) {
     };
     useEffect(() => {
         axios
-            .get("https://sudanstechapi.herokuapp.com/trainings")
+            .get("https://sudans-api.herokuapp.com/trainings")
             .then((res) => {
                 res.data.map((item) => {
                     if (item._id == props.name) {
@@ -37,7 +37,7 @@ export default function Update(props) {
         console.log(course);
         // console.log(local_modules);
         axios
-            .put("https://sudanstechapi.herokuapp.com/training/change", {
+            .put("https://sudans-api.herokuapp.com/training/change", {
                 data: course,
             })
             .then(console.log("sent"));
