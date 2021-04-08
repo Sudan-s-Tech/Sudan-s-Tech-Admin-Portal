@@ -40,7 +40,7 @@ export default function Test(props) {
         obj.title = main_title;
     }
     async function add_module() {
-        axios.post("https://sudans-api.herokuapp.com/create", {
+        axios.post("https://sudans-api.herokuapp.com/trainings/create", {
             data: await ar,
         });
         // console.log(ar);
