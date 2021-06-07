@@ -14,6 +14,7 @@ export default function Test(props) {
         duration: "",
         level: 0,
         modules: [{}],
+        live: false,
     });
     const notify = () => {
         toast.success("Training Created!", {
@@ -163,6 +164,25 @@ export default function Test(props) {
                                 setAr((prevState) => ({
                                     ...prevState,
                                     body: e.target.value,
+                                }));
+                            }}
+                        />
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            Live
+                        </span>
+                        <input
+                            type="boolean"
+                            class="form-control"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                            placeholder="body"
+                            onChange={(e) => {
+                                e.preventDefault();
+                                setAr((prevState) => ({
+                                    ...prevState,
+                                    live: e.target.value,
                                 }));
                             }}
                         />

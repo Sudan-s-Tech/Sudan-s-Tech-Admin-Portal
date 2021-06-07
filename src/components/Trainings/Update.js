@@ -47,7 +47,7 @@ export default function Update(props) {
             <form>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">
-                        @
+                        Title
                     </span>
                     <input
                         type="text"
@@ -85,7 +85,7 @@ export default function Update(props) {
                 </div> */}
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">
-                        @
+                        level
                     </span>
                     <input
                         type="text"
@@ -104,7 +104,7 @@ export default function Update(props) {
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">
-                        @
+                        body
                     </span>
                     <input
                         type="text"
@@ -123,7 +123,26 @@ export default function Update(props) {
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">
-                        @
+                        Live
+                    </span>
+                    <input
+                        type="boolean"
+                        class="form-control"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                        value={course.live}
+                        onChange={(e) => {
+                            e.preventDefault();
+                            setcourse((prevState) => ({
+                                ...prevState,
+                                live: e.target.value,
+                            }));
+                        }}
+                    />
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        about
                     </span>
                     <input
                         type="text"
@@ -142,7 +161,7 @@ export default function Update(props) {
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">
-                        @
+                        duration
                     </span>
                     <input
                         type="text"
@@ -161,7 +180,7 @@ export default function Update(props) {
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">
-                        @
+                        lesson
                     </span>
                     <input
                         type="text"
@@ -180,7 +199,7 @@ export default function Update(props) {
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">
-                        @
+                        description
                     </span>
                     <input
                         type="text"
@@ -199,7 +218,7 @@ export default function Update(props) {
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">
-                        @
+                        formurl
                     </span>
                     <input
                         type="text"
@@ -218,7 +237,7 @@ export default function Update(props) {
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">
-                        @
+                        imageurl
                     </span>
                     <input
                         type="text"
@@ -246,7 +265,7 @@ export default function Update(props) {
                                             class="input-group-text"
                                             id="basic-addon1"
                                         >
-                                            @
+                                            sub title
                                         </span>
                                         <input
                                             type="text"
@@ -276,7 +295,7 @@ export default function Update(props) {
                                             class="input-group-text"
                                             id="basic-addon1"
                                         >
-                                            @
+                                            sub items
                                         </span>
                                         <input
                                             type="text"
